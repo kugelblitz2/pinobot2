@@ -11,3 +11,5 @@ to install dependencies. Then,
     python3 bot.py
 
 to start pinobot.
+
+**Compatibility Notice: Runs on all real (UNIX) operating systems. May or may not work on Windows**
