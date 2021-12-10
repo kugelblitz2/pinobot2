@@ -16,7 +16,7 @@ async def on_message(message):
         if not settings.should_activate(message): return
         time.tzset()
         print(time.strftime('%b %d %Y at %I:%M %p: Bot triggered by ', time.localtime()) + settings.user_github)
-        await message.channel.send('@' + settings.user_discord_tag + '! Stop committing during work!')
+        await settings.trigger_action(message)
     except:
         pass
 
