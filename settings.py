@@ -4,7 +4,7 @@ import time
 token = None
 
 # Configurations
-times_active = [[9,5]]
+times_active = [[9,17]]
 user_github = 'MrPicklePinosaur'
 user_discord_id = '485120501807579144'
 
