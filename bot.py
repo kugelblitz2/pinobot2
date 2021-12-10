@@ -7,5 +7,8 @@ client = discord.Client()
 async def on_ready():
     print(f'{client.user} has connected to Discord!')
 
-client.run(token)
+@client.event
+async def on_message(message):
+    print(message.embeds)
 
+client.run(token)
