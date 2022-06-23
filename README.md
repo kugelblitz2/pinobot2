@@ -1,5 +1,5 @@
-# pinobot
-A bot to remind Daniel to stop committing during work hours
+# pinobot2
+A bot to remind Daniel to be more productive with his time
 
 ## How To Use
 Configure `settings.py`, cd into the directory and run
@@ -11,5 +11,15 @@ to install dependencies. Then,
     python3 bot.py
 
 to start pinobot.
+
+## Running as a service
+Change the path in `pinobot.service` to the location of your `bot.py` file
+
+    sudo pip3 install -r requirements
+    sudo mv ./pinobot2.service /etc/systemd
+    sudo systemctl daemon-reload
+    sudo systemctl enable pinobot2
+    sudo systemctl start pinobot2
+
 
 **Compatibility Notice: Runs on all real (UNIX) operating systems. May or may not work on Windows**

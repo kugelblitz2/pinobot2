@@ -1,7 +1,8 @@
 import discord
+from discord.ext import tasks
 import time
 
-import settings
+import functions
 
 client = discord.Client()
 
@@ -13,11 +14,18 @@ async def on_ready():
 async def on_message(message):
     try:
         if not 'github' in message.embeds[0].author.url: return
-        if not settings.should_activate(message): return
+        functions.should_update(message)
         time.tzset()
-        print(time.strftime('%b %d %Y at %I:%M %p: Bot triggered by ', time.localtime()) + settings.user_github)
-        await settings.trigger_action(message)
+        print(time.strftime('%b %d %Y at %I:%M %p: Bot triggered by ', time.localtime()) + functions.user_github)
     except:
         pass
 
-client.run(settings.token)
+@tasks.loop(minutes=1)
+async def check_time():
+    if functions.should_trigger():
+        functions.last_commit = int(time.time())
+        await functions.trigger_action()
+        print(time.strftime('%b %d %Y at %I:%M %p: ', time.localtime()) + functions.user_github + " was pinged!")
+
+check_time.start()
+client.run(functions.token)
