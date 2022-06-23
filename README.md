@@ -16,7 +16,7 @@ to start pinobot.
 Change the path in `pinobot.service` to the location of your `bot.py` file
 
     sudo pip3 install -r requirements
-    sudo mv ./pinobot2.service /etc/systemd
+    sudo cp ./pinobot2.service /etc/systemd/system
     sudo systemctl daemon-reload
     sudo systemctl enable pinobot2
     sudo systemctl start pinobot2
